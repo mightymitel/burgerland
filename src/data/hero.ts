@@ -1,5 +1,6 @@
 export const heroDetails = {
-    heading: 'Smart, Secure, Simple Financial Management',
-    subheading: 'From effortless budgeting to real-time investment insights, Finwise puts you in control of your money like never before',
-    centerImageSrc: '/images/hero-mockup.webp',
+    heading: 'BurgerLand',
+    subheading: 'Welcome to Burger Land, the ultimate amusement park where every twist, turn, and tantalizing scent is infused with pure playfulness!',
+    centerImageSrc: '',
+    backgroundImageSrc: '/images/rollercoaster1.jpeg',
 }
