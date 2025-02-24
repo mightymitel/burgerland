@@ -17,7 +17,7 @@ function makeQueryClient() {
         staleTime: 1000 * 60, // 1 minute
         refetchOnMount: false,
         refetchOnReconnect: false,
-        gcTime: 1000 * 60 * 60 * 24, // 24 hours
+        gcTime: 1000 * 60 * 60 * 24 * 30, // 30 days
       },
     },
   });
@@ -53,7 +53,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     return (
         <>
             {persister ? (
-                <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
+                <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }} onSuccess={()=>console.log("restored")}>
                     {children}
                 </PersistQueryClientProvider>
             ) : (
