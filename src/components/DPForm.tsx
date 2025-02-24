@@ -2,6 +2,8 @@
 
 import { useUserOptions } from "@/dataHooks/useUserOptions";
 import { UserOptions } from "@/types";
+import NumberInput from "@/components/inputs/NumberInput";
+import DateInput from "@/components/inputs/DateInput";
 
 interface DPFormProps {
   onSubmit?: (data: UserOptions) => void;
@@ -21,36 +23,21 @@ const DPForm: React.FC<DPFormProps> = ({ onSubmit }) => {
       className="max-w-2xl pt-5 mt-10 mb-20 mx-auto p-4 bg-white shadow-md rounded-lg"
     >
       <div className="flex space-x-4 mb-4">
-        <input
-          type="date"
+      <DateInput
           value={userOptions.date || ""}
-          onChange={(e) => setUserOptions({date: e.target.value})}
+          onChange={(e) => setUserOptions({ date: e })}
           className="grow"
         />
-        <label>
-          Adults:
-          <input
-            type="number"
-            value={userOptions.nAdults}
-            onChange={(e) =>
-              setUserOptions({ nAdults: Number(e.target.value) })
-            }
-            min={0}
-            max={100}
-          />
-        </label>
-        <label>
-          Children:
-          <input
-            type="number"
-            value={userOptions.nChildren}
-            onChange={(e) =>
-              setUserOptions({ nChildren: Number(e.target.value) })
-            }
-            min={0}
-            max={100}
-          />
-        </label>
+        <NumberInput
+          label="Adults:"
+          value={userOptions.nAdults}
+          onChange={(value) => setUserOptions({ nAdults: value })}
+        />
+        <NumberInput
+          label="Children:"
+          value={userOptions.nChildren}
+          onChange={(value) => setUserOptions({ nChildren: value })}
+        />
         <label className="flex items-center flex-col flec justify-center">
           Family
           <input

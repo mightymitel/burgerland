@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         
             </div>
 
-            <DPForm onSubmit={()=>router.push("./planner")}/>
+            <DPForm onSubmit={()=>router.push("./planner?section=ticketSelect")}/>
         </section>
     );
 };
