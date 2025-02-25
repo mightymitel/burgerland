@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import DPForm from "@/components/DPForm";
 import { plannerDetails } from "@/data/planner";
 import TicketSelector from "@/components/TicketSelector";
+import CheckoutShortcut from "@/components/CheckoutShortcut";
 
 interface PlanYourDayPageProps {
   params: Promise<{ section: string }>;
@@ -68,9 +69,23 @@ const PlanYourDayPage: React.FC = () => {
         ref={sectionsRef["ticketSelect"]}
       >
         <h1 className="text-3xl font-bold text-center mb-8">Select your ticket:</h1>
-        <TicketSelector />
+        <TicketSelector onChange={() => {sectionsRef["explore"].current?.scrollIntoView({behavior: 'smooth'})}} />
       </section>
-      
+      <section
+        id="plannerExploreSection"
+        className="px-4 py-40"
+        ref={sectionsRef["explore"]}
+      >
+        <h1 className="text-3xl font-bold text-center mb-8">Explore the park:</h1>
+      </section>
+      <section
+        id="plannerDinningSection"
+        className="px-4 py-40"
+        ref={sectionsRef["dinning"]}
+      >
+        <h1 className="text-3xl font-bold text-center mb-8">Dinning options:</h1>
+      </section>
+      <CheckoutShortcut />
     </>
   );
 };
