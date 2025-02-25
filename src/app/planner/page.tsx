@@ -78,6 +78,7 @@ const PlanYourDayPage: React.FC = () => {
       >
         <h1 className="text-3xl font-bold text-center mb-8">Explore the park:</h1>
       </section>
+     
       <section
         id="plannerDinningSection"
         className="px-4 py-40"
