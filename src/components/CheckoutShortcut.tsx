@@ -14,10 +14,14 @@ const CheckoutShortcut: React.FC = () => {
   return (
     <>
       {isReadyToCheckout && (
-        <div className="fixed text-right bottom-4 right-4 cursor-pointer bg-green-500 text-white p-4 rounded shadow-lg">
-          <Link href={"/checkout"}>
+        <div className="fixed text-right bottom-4 right-4 cursor-pointer bg-green-500 text-white p-4 rounded shadow-lg" role="complementary">
+          <Link 
+            href={"/checkout"}
+            className="flex items-center gap-2"
+            aria-label="Proceed to checkout with your selected tickets"
+          >
             <span>Your ticket is ready, proceed to checkout</span>
-            <FaArrowCircleRight />
+            <FaArrowCircleRight aria-hidden="true" />
           </Link>
         </div>
       )}
