@@ -42,6 +42,7 @@ export type UserOptions = {
   date?: string;
   ticketPackage?: TicketPackage;
   reservations?: Reservation[];
+  diningReservations?: Reservation[];
   bookmarks?: ParkNode[];
   isFamily?: boolean;
 };

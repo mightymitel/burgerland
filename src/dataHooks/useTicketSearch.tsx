@@ -5,8 +5,10 @@ import { useUserOptions } from "./useUserOptions";
 export const useTicketSearch = () => {
   const { data: userOptions } = useUserOptions();
   const fetchTickets = async () => {
-    return ticketPackages.filter((p) =>
-      p.conditions == null || p.conditions.every((c) => c.condition(userOptions))
+    return ticketPackages.filter(
+      (p) =>
+        p.conditions == null ||
+        p.conditions.every((c) => c.condition(userOptions))
     );
   };
   return useQuery({

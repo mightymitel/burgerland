@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import DPForm from "@/components/DPForm";
@@ -10,10 +10,6 @@ import CheckoutShortcut from "@/components/CheckoutShortcut";
 import Section from "@/components/Section";
 import { usePlanYourDayFlow } from "@/hooks/usePlanYourDayFlow";
 
-interface PlanYourDayPageProps {
-  params: Promise<{ section: string }>;
-}
-
 const PlanYourDayPage: React.FC = () => {
   const sectionsRef: {
     [key: string]: React.MutableRefObject<HTMLDivElement | null>;
@@ -21,13 +17,13 @@ const PlanYourDayPage: React.FC = () => {
     start: useRef(null),
     ticketSelect: useRef(null),
     explore: useRef(null),
-    dinning: useRef(null),
+    dining: useRef(null),
   };
   const { isStepReady } = usePlanYourDayFlow();
   const searchParams = useSearchParams();
-  const section = searchParams.get("section");
+  const section = searchParams.get("section") as 'DPF' | 'ticketSelect' | 'explore' | 'dining';
   useEffect(() => {
-    if (section && sectionsRef[section]) {
+    if (section && sectionsRef[section] && isStepReady(section)) {
       sectionsRef[section].current?.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
@@ -63,8 +59,9 @@ const PlanYourDayPage: React.FC = () => {
 
           <DPForm
             onSubmit={() => {
-              sectionsRef["ticketSelect"].current?.scrollIntoView({
-                behavior: "smooth",
+              if(isStepReady("ticketSelect"))
+                sectionsRef["ticketSelect"].current?.scrollIntoView({
+                  behavior: "smooth",
               });
             }}
           />
@@ -93,11 +90,11 @@ const PlanYourDayPage: React.FC = () => {
         ref={sectionsRef["explore"]}
       />
       <Section
-        id="plannerDinningSection"
-        title="Dinning options:"
+        id="plannerDiningSection"
+        title="Dining options:"
         description=""
-        enabled={isStepReady("dinning")}
-        ref={sectionsRef["dinning"]}
+        enabled={isStepReady("dining")}
+        ref={sectionsRef["dining"]}
       />
       <CheckoutShortcut />
     </>

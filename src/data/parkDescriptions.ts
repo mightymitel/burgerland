@@ -17,6 +17,7 @@ export const welcomeMessage = {
   long: "Welcome to Burger Land, the ultimate amusement park where every twist, turn, and \
 tantalizing scent is infused with pure playfulness! Here, joy is served up with a side of \
 whimsy, and every moment is a bite of fun waiting to be savored",
-  short: "Welcome to Burger Land, the ultimate amusement park where every twist, turn, and \
-tantalizing scent is infused with pure playfulness"
-}
+  short:
+    "Welcome to Burger Land, the ultimate amusement park where every twist, turn, and \
+tantalizing scent is infused with pure playfulness",
+};

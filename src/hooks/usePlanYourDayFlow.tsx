@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useUserOptions } from "@/dataHooks/useUserOptions";
 
-export const planYourDaySteps = ["DPF", "ticketSelect", "explore", "dinning"] as const;
+export const planYourDaySteps = ["DPF", "ticketSelect", "explore", "dining"] as const;
 const stepsPrerequisites: Record<typeof planYourDaySteps[number], typeof planYourDaySteps[number][]> = {
   DPF: [],
   ticketSelect: ["DPF"],
   explore: ["DPF", "ticketSelect"],
-  dinning: ["DPF", "ticketSelect"],
+  dining: ["DPF", "ticketSelect"],
 };
 
 type Step = typeof planYourDaySteps[number];
@@ -24,7 +24,7 @@ export const usePlanYourDayFlow = () => {
       ...stepsState,
       DPF: userOptions?.date != "" && ((userOptions.nAdults ?? 0) + (userOptions.nChildren ?? 0)) > 0,
       ticketSelect: !!userOptions.ticketPackage,
-      dinning: !!userOptions.diningReservations,
+      dining: !!userOptions.diningReservations,
       explore: !!userOptions.bookmarks || !!userOptions.reservations,
     });
   }, [userOptions]);

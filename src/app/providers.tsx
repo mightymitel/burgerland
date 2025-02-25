@@ -50,7 +50,7 @@ function getPersister(){
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     const queryClient = getQueryClient();
-    const [persister, setPersister] = useState(getPersister());
+    const [persister] = useState(getPersister());
     return (
         <>
             {persister ? (

@@ -16,7 +16,6 @@ const TicketSelector: React.FC<TicketSelectorProps> = ({ onChange }) => {
     isPending,
     isError,
     data: ticketsAvailable,
-    error,
   } = useTicketSearch();
 
   const handleSelect = (p: TicketPackage) => {

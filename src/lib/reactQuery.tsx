@@ -1,13 +1,8 @@
 "use client";
 
 import { QueryClient } from "@tanstack/react-query";
-import {
-  Persister,
-  PersistedClient,
-  PersistQueryClientProvider,
-  removeOldestQuery,
-} from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { removeOldestQuery } from "@tanstack/react-query-persist-client";
 
 function makeQueryClient() {
   return new QueryClient({

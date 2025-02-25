@@ -1,4 +1,4 @@
-import { useQuery, isServer } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { UserOptions } from "@/types";
 import { getQueryClient } from "@/app/providers";
 
