@@ -25,12 +25,12 @@ const Header: React.FC = () => {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src={brandingDetails.logo}
-              className="min-w-fit w-7 h-7"
+              className="min-w-fit w-10 h-10"
               alt="logo"
-              width={64}
-              height={64}
+              width={100}
+              height={100}
             />
-            <span className="manrope text-xl font-semibold text-foreground cursor-pointer">
+            <span className="manrope text-2xl font-semibold text-foreground cursor-pointer underline">
               {siteDetails.siteName}
             </span>
           </Link>
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className="text-foreground hover:text-foreground-accent transition-colors"
+                  className="text-foreground text-xl font-semibold hover:text-foreground-accent transition-colors"
                 >
                   {item.text}
                 </Link>

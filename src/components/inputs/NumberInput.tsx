@@ -32,7 +32,7 @@ const NumberInput: React.FC<NumberInputProps> = ({value = 0, onChange, label = "
                 <button 
                     type="button"
                     onClick={handleDecrement} 
-                    className="bg-red-500 text-white px-3 py-1 w-full block rounded-t md:rounded-none md:rounded-l flex-grow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                    className="bg-gray-200 text-black px-3 py-1 w-full block rounded-t md:rounded-none md:rounded-l flex-grow hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
                 >
                     -
                 </button>
@@ -48,7 +48,7 @@ const NumberInput: React.FC<NumberInputProps> = ({value = 0, onChange, label = "
                 <button 
                     type="button"
                     onClick={handleIncrement} 
-                    className="bg-green-500 text-white px-3 py-1 w-full block rounded-b md:rounded-none md:rounded-r flex-grow hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                    className="bg-gray-300 text-black px-3 py-1 w-full block rounded-b md:rounded-none md:rounded-r flex-grow hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
                 >
                     +
                 </button>

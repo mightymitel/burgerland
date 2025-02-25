@@ -19,16 +19,19 @@ const TicketCard: React.FC<TicketCardProps> = ({
   const selected = userOptions.ticketPackage?.id === ticketPackage.id;
 
   return (
-    <div className={cn("filter drop-shadow-xl", 
-         {" ring-offset-4 ring-4 ring-red-700 rounded-xl": selected} )}
+    <div
+      className={cn("filter drop-shadow-xl", {
+        " ring-offset-4 ring-4 ring-red-700 rounded-xl": selected,
+      })}
     >
       <div
         className={cn(
           "p-2 pb-8 w-60 ticket_mask bg-yellow-300 rounded-md",
           "ticket_mask",
+          "cursor-pointer"
         )}
       >
-        <div className="px-6 py-4">
+        <div className="px-6 py-4" onClick={onSelect}>
           <div className="font-bold text-xl mb-2 h-14 border-b-red-700 border-b-2">
             {ticketPackage.name}
           </div>

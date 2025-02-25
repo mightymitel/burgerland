@@ -19,6 +19,7 @@ const Hero: React.FC = () => {
           src={heroDetails.backgroundImageSrc}
           layout="fill"
           objectFit="cover"
+          objectPosition="top"
           quality={100}
           alt="background"
         />

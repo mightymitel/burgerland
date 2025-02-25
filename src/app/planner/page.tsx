@@ -7,6 +7,8 @@ import DPForm from "@/components/DPForm";
 import { plannerDetails } from "@/data/planner";
 import TicketSelector from "@/components/TicketSelector";
 import CheckoutShortcut from "@/components/CheckoutShortcut";
+import Section from "@/components/Section";
+import { usePlanYourDayFlow } from "@/hooks/usePlanYourDayFlow";
 
 interface PlanYourDayPageProps {
   params: Promise<{ section: string }>;
@@ -21,6 +23,7 @@ const PlanYourDayPage: React.FC = () => {
     explore: useRef(null),
     dinning: useRef(null),
   };
+  const {isStepReady} = usePlanYourDayFlow();
   const searchParams = useSearchParams();
   const section = searchParams.get("section");
   useEffect(() => {
@@ -46,7 +49,7 @@ const PlanYourDayPage: React.FC = () => {
             quality={100}
             alt="background"
           />
-          <div className="absolute inset-0 h-full w-full bg-white [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(255,255,255,0.75),transparent)]"></div>
+          <div className="absolute inset-0 h-full w-full bg-white [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(255,255,255,0.9),transparent)]"></div>
         </div>
 
         <div className="text-center">
@@ -63,29 +66,29 @@ const PlanYourDayPage: React.FC = () => {
           <DPForm onSubmit={() => {sectionsRef["ticketSelect"].current?.scrollIntoView({behavior: "smooth"})}} />
         </div>
       </section>
-      <section
+      <Section
         id="plannerTicketSelectionSection"
-        className="px-4 py-40"
+        title="Select your ticket:"
+        description=""
+        enabled={isStepReady("ticketSelect")}
         ref={sectionsRef["ticketSelect"]}
       >
-        <h1 className="text-3xl font-bold text-center mb-8">Select your ticket:</h1>
         <TicketSelector onChange={() => {sectionsRef["explore"].current?.scrollIntoView({behavior: 'smooth'})}} />
-      </section>
-      <section
+      </Section>
+      <Section
         id="plannerExploreSection"
-        className="px-4 py-40"
+        title="Explore the park:"
+        description=""
+        enabled={isStepReady("explore")}
         ref={sectionsRef["explore"]}
-      >
-        <h1 className="text-3xl font-bold text-center mb-8">Explore the park:</h1>
-      </section>
-     
-      <section
+      />
+      <Section
         id="plannerDinningSection"
-        className="px-4 py-40"
+        title="Dinning options:"
+        description=""
+        enabled={isStepReady("dinning")}
         ref={sectionsRef["dinning"]}
-      >
-        <h1 className="text-3xl font-bold text-center mb-8">Dinning options:</h1>
-      </section>
+      />
       <CheckoutShortcut />
     </>
   );

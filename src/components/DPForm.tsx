@@ -23,7 +23,7 @@ const DPForm: React.FC<DPFormProps> = ({ onSubmit }) => {
       className="max-w-2xl pt-5 mt-10 mb-20 mx-auto p-4 bg-white shadow-md rounded-lg"
     >
       <div className="flex space-x-4 mb-4">
-      <DateInput
+        <DateInput
           value={userOptions.date || ""}
           onChange={(e) => setUserOptions({ date: e })}
           className="grow"
@@ -38,13 +38,14 @@ const DPForm: React.FC<DPFormProps> = ({ onSubmit }) => {
           value={userOptions.nChildren}
           onChange={(value) => setUserOptions({ nChildren: value })}
         />
-        <label className="flex items-center flex-col flec justify-center">
-          Family
+        <label className="flex items-center flex-col flec justify-center text-center text-sm">
+          Apply for <br/>
+          Family discount
           <input
             type="checkbox"
             checked={userOptions.isFamily}
             onChange={(e) => setUserOptions({ isFamily: e.target.checked })}
-            className="mr-2 checkbox-lg w-1/2 h-1/2"
+            className="mr-2 checkbox-lg w-1/3 h-1/3 accent-yellow-300 "
           />
         </label>
       </div>
