@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useSearchParams } from "next/navigation";
 
 import DPForm from "@/components/DPForm";
