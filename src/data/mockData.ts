@@ -1,4 +1,4 @@
-import { PackageCondition, TicketPackage } from "../types";
+import { Attraction, PackageCondition, Restaurant, TicketPackage } from "../types";
 
 const familyOnly: PackageCondition = {
   description: "This package is only available to families",
@@ -39,15 +39,71 @@ export const ticketPackages: TicketPackage[] = [
   },
 ];
 
-export const attractions = {
-  standard: [
-    { id: 1, name: "The Great Burger Museum", price: 10 },
-    { id: 2, name: "French Fry Falls", price: 10 },
-    { id: 3, name: "Cheese Castle", price: 15 },
-    { id: 4, name: "Pickle Playground", price: 5 },
-    { id: 5, name: "Lettuce Lagoon", price: 12 },
-    { id: 6, name: "Tomato Tower", price: 8 },
-    { id: 7, name: "Onion Orbit", price: 10 },
-    { id: 8, name: "Bacon Bridge", price: 20 },
-  ],
-};
+export const attractions: Attraction[] = [
+  {
+    id: 1,
+    name: "The Patty Peak Plunge",
+    imageSrc: "/images/attractions/att1.jpeg",
+    description: "A thrilling plunge from the peak of Patty Mountain.",
+    type: "attraction",
+  },
+  {
+    id: 2,
+    name: "Ketchup Canyon Rapids",
+    imageSrc: "/images/attractions/att2.jpeg",
+    description: "Navigate the wild rapids of Ketchup Canyon.",
+    type: "attraction",
+  },
+  {
+    id: 3,
+    name: "The Bun Bounce Zone",
+    imageSrc: "/images/attractions/att3.jpeg",
+    description: "Bounce around in the fun-filled Bun Zone.",
+    type: "attraction",
+  },
+  {
+    id: 4,
+    name: "Onion Ring Orbit",
+    imageSrc: "/images/attractions/att4.jpeg",
+    description: "Spin around in the Onion Ring Orbit.",
+    type: "attraction",
+  },
+  {
+    id: 5,
+    name: "The Secret Sauce Speedway",
+    imageSrc: "/images/attractions/att5.jpeg",
+    description: "Race through the Secret Sauce Speedway.",
+    type: "attraction",
+  },
+  {
+    id: 6,
+    name: "Lettuce Leaf Lagoon",
+    imageSrc: "/images/attractions/att6.jpeg",
+    description: "Relax in the Lettuce Leaf Lagoon.",
+    type: "attraction",
+  },
+];
+
+export const restaurants: Restaurant[] = [
+  {
+    id: 1,
+    name: "Patty's Place",
+    description: "A casual eatery with a fun, playful vibe.",
+    imageSrc: "/images/restaurants/rest1.jpeg",
+    type: "restaurant",
+  },
+  {
+    id: 2,
+    name: "French Fry Factory",
+    description: "A quick-service spot specializing in french fries and other sides.",
+    imageSrc: "/images/restaurants/rest2.jpeg",
+    type: "restaurant",
+  },
+  {
+    id: 3,
+    name: "Burger Emporium",
+    description: "A Michelin star restaurant offering gourmet burgers.",
+    imageSrc: "/images/restaurants/rest3.jpg",
+    type: "restaurant",
+  },
+];

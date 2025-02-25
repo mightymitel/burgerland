@@ -9,6 +9,7 @@ import TicketSelector from "@/components/TicketSelector";
 import CheckoutShortcut from "@/components/CheckoutShortcut";
 import Section from "@/components/Section";
 import { usePlanYourDayFlow } from "@/hooks/usePlanYourDayFlow";
+import { ExploreSection } from "@/components/ExploreSection";
 
 const PlanYourDayPage: React.FC = () => {
   const sectionsRef: {
@@ -21,7 +22,11 @@ const PlanYourDayPage: React.FC = () => {
   };
   const { isStepReady } = usePlanYourDayFlow();
   const searchParams = useSearchParams();
-  const section = searchParams.get("section") as 'DPF' | 'ticketSelect' | 'explore' | 'dining';
+  const section = searchParams.get("section") as
+    | "DPF"
+    | "ticketSelect"
+    | "explore"
+    | "dining";
   useEffect(() => {
     if (section && sectionsRef[section] && isStepReady(section)) {
       sectionsRef[section].current?.scrollIntoView({ behavior: "smooth" });
@@ -48,9 +53,7 @@ const PlanYourDayPage: React.FC = () => {
         </div>
 
         <div className="text-center">
-          <h1
-            className="text-5xl py-5 md:text-8xl md:leading-tight font-black text-foreground max-w-xl md:max-w-2xl mx-auto text-red-700 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]"
-          >
+          <h1 className="text-5xl py-5 md:text-8xl md:leading-tight font-black text-foreground max-w-xl md:max-w-2xl mx-auto text-red-700 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]">
             {plannerDetails.heading}
           </h1>
           <h2 className="mt-4 py-5 md:text-xl font-bold text-foreground max-w-xl mx-auto">
@@ -59,10 +62,10 @@ const PlanYourDayPage: React.FC = () => {
 
           <DPForm
             onSubmit={() => {
-              if(isStepReady("ticketSelect"))
+              if (isStepReady("ticketSelect"))
                 sectionsRef["ticketSelect"].current?.scrollIntoView({
                   behavior: "smooth",
-              });
+                });
             }}
           />
         </div>
@@ -88,14 +91,16 @@ const PlanYourDayPage: React.FC = () => {
         description=""
         enabled={isStepReady("explore")}
         ref={sectionsRef["explore"]}
-      />
-      <Section
+      >
+        <ExploreSection />
+      </Section>
+      {/* <Section
         id="plannerDiningSection"
         title="Dining options:"
         description=""
         enabled={isStepReady("dining")}
         ref={sectionsRef["dining"]}
-      />
+      /> */}
       <CheckoutShortcut />
     </>
   );
