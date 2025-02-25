@@ -8,6 +8,7 @@ import {
 
 import { Persister, PersistQueryClientProvider, removeOldestQuery } from '@tanstack/react-query-persist-client'
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
+import { useState } from "react";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -49,7 +50,7 @@ function getPersister(){
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     const queryClient = getQueryClient();
-    const persister = getPersister();
+    const [persister, setPersister] = useState(getPersister());
     return (
         <>
             {persister ? (

@@ -23,7 +23,7 @@ const PlanYourDayPage: React.FC = () => {
     explore: useRef(null),
     dinning: useRef(null),
   };
-  const {isStepReady} = usePlanYourDayFlow();
+  const { isStepReady } = usePlanYourDayFlow();
   const searchParams = useSearchParams();
   const section = searchParams.get("section");
   useEffect(() => {
@@ -43,9 +43,8 @@ const PlanYourDayPage: React.FC = () => {
         <div className="absolute left-0 top-0 bottom-0 -z-10 w-full blur-[4px]">
           <Image
             src={plannerDetails.backgroundImageSrc}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="top"
+            fill
+            className="object-cover object-top"
             quality={100}
             alt="background"
           />
@@ -54,8 +53,7 @@ const PlanYourDayPage: React.FC = () => {
 
         <div className="text-center">
           <h1
-            className="text-5xl py-5 md:text-8xl md:leading-tight font-black text-foreground max-w-xl md:max-w-2xl mx-auto text-red-700"
-            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+            className="text-5xl py-5 md:text-8xl md:leading-tight font-black text-foreground max-w-xl md:max-w-2xl mx-auto text-red-700 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]"
           >
             {plannerDetails.heading}
           </h1>
@@ -63,7 +61,13 @@ const PlanYourDayPage: React.FC = () => {
             {plannerDetails.subheading}
           </h2>
 
-          <DPForm onSubmit={() => {sectionsRef["ticketSelect"].current?.scrollIntoView({behavior: "smooth"})}} />
+          <DPForm
+            onSubmit={() => {
+              sectionsRef["ticketSelect"].current?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          />
         </div>
       </section>
       <Section
@@ -73,7 +77,13 @@ const PlanYourDayPage: React.FC = () => {
         enabled={isStepReady("ticketSelect")}
         ref={sectionsRef["ticketSelect"]}
       >
-        <TicketSelector onChange={() => {sectionsRef["explore"].current?.scrollIntoView({behavior: 'smooth'})}} />
+        <TicketSelector
+          onChange={() => {
+            sectionsRef["explore"].current?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+        />
       </Section>
       <Section
         id="plannerExploreSection"
