@@ -43,7 +43,7 @@ const PlanYourDayPage: React.FC = () => {
         <div className="absolute left-0 top-0 bottom-0 -z-10 w-full blur-[4px]">
           <Image
             src={plannerDetails.backgroundImageSrc}
-            fill
+            layout="fill"
             className="object-cover object-top"
             quality={100}
             alt="background"

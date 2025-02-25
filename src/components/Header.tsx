@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/legacy/image";
 import React, { useState } from "react";
-import { Transition } from "@headlessui/react";
 import { HiOutlineXMark, HiBars3 } from "react-icons/hi2";
+import cn from "classnames";
 
 import Container from "./Container";
 import { siteDetails, brandingDetails } from "@/data/siteDetails";
@@ -27,8 +27,8 @@ const Header: React.FC = () => {
               src={brandingDetails.logo}
               className="min-w-fit w-10 h-10"
               alt="logo"
-              width={100}
-              height={100}
+              width={50}
+              height={50}
             />
             <span className="manrope text-2xl font-semibold text-foreground cursor-pointer underline">
               {siteDetails.siteName}
@@ -47,7 +47,6 @@ const Header: React.FC = () => {
                 </Link>
               </li>
             ))}
-      
           </ul>
 
           {/* Mobile Menu Button */}
@@ -71,40 +70,37 @@ const Header: React.FC = () => {
       </Container>
 
       {/* Mobile Menu with Transition */}
-      <Transition
-        show={isOpen}
-        enter="transition ease-out duration-200 transform"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100 scale-100"
-        leave="transition ease-in duration-75 transform"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
+
+      <div
+        id="mobile-menu"
+        className={cn([
+          "md:hidden bg-white shadow-lg",
+          isOpen ? "block" : "hidden",
+        ])}
       >
-        <div id="mobile-menu" className="md:hidden bg-white shadow-lg">
-          <ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
-            {menuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="text-foreground hover:text-primary block"
-                  onClick={toggleMenu}
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
-            <li>
+        <ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
+          {menuItems.map((item) => (
+            <li key={item.text}>
               <Link
-                href="#cta"
-                className="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit"
+                href={item.url}
+                className="text-foreground hover:text-primary block"
                 onClick={toggleMenu}
               >
-                Get Started
+                {item.text}
               </Link>
             </li>
-          </ul>
-        </div>
-      </Transition>
+          ))}
+          <li>
+            <Link
+              href="#cta"
+              className="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit"
+              onClick={toggleMenu}
+            >
+              Get Started
+            </Link>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 };

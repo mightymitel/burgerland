@@ -18,7 +18,7 @@ function makeQueryClient() {
         staleTime: 1000 * 60, // 1 minute
         refetchOnMount: false,
         refetchOnReconnect: false,
-        gcTime: 1000 * 60 * 60 * 24 * 30, // 30 days
+        gcTime: 1000 * 60 * 60 * 24, // 1 day
       },
     },
   });
