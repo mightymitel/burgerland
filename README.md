@@ -3,7 +3,7 @@
 This is my proposed flow for the "Plan Your Day" flow for Burgerland, and a partial code implementation.
 The main user flow includes: arriving at the "PlanYourDay" page, completing the DPF (Date and Party Form), then the available ticket packages are generated and presented. 
 Once the ticket package is chosen, the user can continue exploring the park: making dinner or show reservations, bookmarking attractions, etc. Or they may proceed to checkout, which would present a summary of the tickets and reservations chosen and integrate with payment.
-#
+##
 Other elements considered are: interactive map and itinerary builder - in which a user would be able to edit one of the presented popular itineraries or start a new one, and eventually a personal map with the marked itinerary could be generated.
 
 ## User Flow Diagram
@@ -33,6 +33,11 @@ yarn build
 yarn start
 ```
 
+### Infrastructure
+Consider managed NextJS serverless solutions (like Vercel, Netlify etc) or deployment as a Docker Container.
+The initial solution does not require storing client data server-side for this feature. 
+Consider using CDN for images.
+
 ## Technical Considerations
 
 ### Accessibility
@@ -57,7 +62,7 @@ For the final implementation consider:
 - Cross-browser testing strategy
 
 ### Performance Optimization
-- NextJS provides handles Image optimization and lazy loading
-- NextJS provides handles Server-side rendering for initial page load
+- NextJS handles Image optimization and lazy loading
+- NextJS handles Server-side rendering for initial page load
 - Used ReactQuery for caching API responses
 - Consider Progressive Web App capabilities
