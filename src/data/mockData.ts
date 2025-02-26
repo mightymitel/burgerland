@@ -1,13 +1,13 @@
-import { Attraction, PackageCondition, Restaurant, TicketPackage } from "../types";
+import { Attraction, PackageCondition, Restaurant, TicketPackage, UserOptions } from "../types";
 
 const familyOnly: PackageCondition = {
   description: "This package is only available to families",
-  condition: (options: any) => options?.isFamily,
+  condition: (options: UserOptions) => !!options?.isFamily,
 };
 
 const groupOnly: PackageCondition = {
   description: "This package is only available to groups of 7 or more",
-  condition: (options: any) => options?.nAdults && options.nAdults > 7,
+  condition: (options: UserOptions) => !!options?.nAdults && options.nAdults > 7,
 };
 
 export const ticketPackages: TicketPackage[] = [

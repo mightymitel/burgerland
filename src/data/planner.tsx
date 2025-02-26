@@ -5,3 +5,7 @@ export const plannerDetails = {
   centerImageSrc: "/images/hero-mockup.webp",
   backgroundImageSrc: "/images/rollercoaster1.jpeg",
 };
+
+export const noTicketMessage =
+  "Unfortunately, we didn't have any tickets available at this time. \
+          Please try again later.";

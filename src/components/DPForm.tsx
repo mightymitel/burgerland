@@ -14,7 +14,7 @@ const DPForm: React.FC<DPFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit && onSubmit(userOptions);
+    onSubmit?.(userOptions);
   };
 
   return (

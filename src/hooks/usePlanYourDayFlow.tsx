@@ -21,13 +21,12 @@ export const usePlanYourDayFlow = () => {
   useEffect(() => {
     if (!userOptions) return;
     setStepsState({
-      ...stepsState,
       DPF: userOptions?.date != "" && ((userOptions.nAdults ?? 0) + (userOptions.nChildren ?? 0)) > 0,
       ticketSelect: !!userOptions.ticketPackage,
       dining: !!userOptions.diningReservations,
       explore: !!userOptions.bookmarks || !!userOptions.reservations,
     });
-  }, [userOptions]);
+  }, [userOptions, setStepsState]);
 
   const validateUserOptions = () => {
     if (!userOptions.date) return false;

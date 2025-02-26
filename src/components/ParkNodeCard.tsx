@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ParkNode } from '../types';
 
 interface ParkNodeCardProps {
@@ -35,10 +36,13 @@ export const ParkNodeCard: React.FC<ParkNodeCardProps> = ({
       aria-label={`${node.name} - ${node.type}`}
     >
       <div className="aspect-video relative">
-        <img
+        <Image
           src={node.imageSrc}
           alt=""
-          className="h-full w-full object-cover"
+          layout='fill'
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+          priority
           aria-hidden="true"
         />
         <span

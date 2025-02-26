@@ -4,6 +4,7 @@ import React from "react";
 import { useUserOptions } from "@/dataHooks/useUserOptions";
 import TicketCard from "@/components/TicketCard";
 import { TicketPackage } from "@/types";
+import { noTicketMessage } from "@/data/planner";
 
 interface TicketSelectorProps {
   onChange?: (p: TicketPackage) => void;
@@ -14,13 +15,12 @@ const TicketSelector: React.FC<TicketSelectorProps> = ({ onChange }) => {
 
   const {
     isPending,
-    isError,
     data: ticketsAvailable,
   } = useTicketSearch();
 
   const handleSelect = (p: TicketPackage) => {
     setUserOptions({ ticketPackage: p });
-    onChange && onChange(p);
+    if(onChange != undefined) onChange(p);
   };
 
   return (
@@ -41,8 +41,7 @@ const TicketSelector: React.FC<TicketSelectorProps> = ({ onChange }) => {
         </div>
       ) : (
         <div role="alert" className="text-center text-red-600">
-          Unfortunately, we didn't have any tickets available at this time.
-          Please try again later.
+          {noTicketMessage}
         </div>
       )}
     </div>

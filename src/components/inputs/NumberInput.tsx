@@ -14,14 +14,14 @@ const NumberInput: React.FC<NumberInputProps> = ({value = 0, onChange, label = "
         if (currentValue < max) {
             const newValue = currentValue + step;
             setCurrentValue(newValue);
-            onChange && onChange(newValue);
+            onChange?.(newValue);
         }
     };
     const handleDecrement = () => {
         if (currentValue > min) {
             const newValue = currentValue - step;
             setCurrentValue(newValue);
-            onChange && onChange(newValue);
+            onChange?.(newValue);
         }
     };
 
@@ -42,7 +42,11 @@ const NumberInput: React.FC<NumberInputProps> = ({value = 0, onChange, label = "
                     id={`number-input-${label}`}
                     type="number"
                     value={currentValue}
-                    onChange={(e) => {setCurrentValue(parseInt(e.target.value)); onChange && onChange(parseInt(e.target.value))}}
+                    onChange={(e) => {
+                        const newValue = parseInt(e.target.value);
+                        setCurrentValue(newValue);
+                        onChange?.(newValue);
+                    }}
                     min={min}
                     max={max}
                     step={step}

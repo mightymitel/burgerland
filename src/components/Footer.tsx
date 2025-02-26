@@ -5,7 +5,6 @@ import { FaFingerprint } from "react-icons/fa";
 import { siteDetails } from "@/data/siteDetails";
 import { footerDetails } from "@/data/footer";
 import { shortDescriptions } from "@/data/parkDescriptions";
-import { getPlatformIconByName } from "@/utils";
 
 const Footer: React.FC = () => {
   return (

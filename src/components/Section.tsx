@@ -5,11 +5,11 @@ interface Props {
   id: string;
   title: string;
   description: string;
-  enabled: boolean;
+  enabled?: boolean;
 }
 
 const Section = forwardRef<HTMLDivElement, React.PropsWithChildren<Props>>(
-  ({ id, title, description, children, enabled }, ref) => {
+  ({ id, title, description, children, enabled = true }, ref) => {
     return (
       <section
         id={id}
@@ -25,7 +25,7 @@ const Section = forwardRef<HTMLDivElement, React.PropsWithChildren<Props>>(
             <SectionTitle>
               <h2 className="text-center mb-4">{title}</h2>
             </SectionTitle>
-            <p className="mb-12 text-center">{description}</p>
+            <div className="m-auto mb-6 text-center max-w-2xl">{description}</div>
             {children}
           </>
         )}

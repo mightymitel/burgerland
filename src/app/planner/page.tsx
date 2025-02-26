@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
@@ -11,7 +11,7 @@ import Section from "@/components/Section";
 import { usePlanYourDayFlow } from "@/hooks/usePlanYourDayFlow";
 import { ExploreSection } from "@/components/ExploreSection";
 
-const PlanYourDayPage: React.FC = () => {
+const PlannerContent: React.FC = () => {
   const sectionsRef: {
     [key: string]: React.MutableRefObject<HTMLDivElement | null>;
   } = {
@@ -27,6 +27,7 @@ const PlanYourDayPage: React.FC = () => {
     | "ticketSelect"
     | "explore"
     | "dining";
+
   useEffect(() => {
     if (section && sectionsRef[section] && isStepReady(section)) {
       sectionsRef[section].current?.scrollIntoView({ behavior: "smooth" });
@@ -94,15 +95,16 @@ const PlanYourDayPage: React.FC = () => {
       >
         <ExploreSection />
       </Section>
-      {/* <Section
-        id="plannerDiningSection"
-        title="Dining options:"
-        description=""
-        enabled={isStepReady("dining")}
-        ref={sectionsRef["dining"]}
-      /> */}
       <CheckoutShortcut />
     </>
+  );
+};
+
+const PlanYourDayPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PlannerContent />
+    </Suspense>
   );
 };
 

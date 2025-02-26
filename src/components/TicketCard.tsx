@@ -13,7 +13,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
   userOptions,
   onSelect,
 }) => {
-  const { nAdults = 1, nChildren = 0, date, isFamily = false } = userOptions;
+  const { nAdults = 1, nChildren = 0, date} = userOptions;
   const totalPrice =
     nAdults * ticketPackage.priceAdult + nChildren * ticketPackage.priceChild;
   const selected = userOptions.ticketPackage?.id === ticketPackage.id;
